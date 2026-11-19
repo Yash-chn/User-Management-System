@@ -74,9 +74,13 @@ const Register = () => {
         navigate('/user-dashboard', { replace: true });
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || 'Registration failed. Please try again.'
-      );
+      if (!err.response) {
+        setError('Cannot reach server. Please ensure the backend server is running on http://localhost:5000.');
+      } else {
+        setError(
+          err.response?.data?.message || 'Registration failed. Please try again.'
+        );
+      }
     } finally {
       setLoading(false);
     }

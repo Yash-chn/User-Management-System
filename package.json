@@ -4,6 +4,8 @@
   "description": "Full Stack MERN User Management System with Admin Dashboard",
   "private": true,
   "scripts": {
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "start": "concurrently \"npm --prefix backend start\" \"npm --prefix frontend run dev\"",
     "seed": "npm --prefix backend run seed",
     "test": "node backend/scripts/testSuite.js",
     "backend": "npm --prefix backend start",
@@ -21,5 +23,8 @@
     "mongodb"
   ],
   "author": "Full Stack Engineering Team",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
 }

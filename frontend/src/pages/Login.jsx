@@ -36,9 +36,13 @@ const Login = () => {
         navigate(target, { replace: true });
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || 'Login failed. Please check your credentials.'
-      );
+      if (!err.response) {
+        setError('Cannot reach server. Please ensure the backend server is running on http://localhost:5000.');
+      } else {
+        setError(
+          err.response?.data?.message || 'Login failed. Please check your credentials.'
+        );
+      }
     } finally {
       setLoading(false);
     }
